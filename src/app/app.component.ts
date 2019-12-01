@@ -7,16 +7,22 @@ import { ToDo } from "./interface/to-do";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  todos: ToDo[] = [];
+  todos: ToDo[] = [{ task: "gym", completed: false }];
 
   // title = "TODO List";
   // newPost: ToDo = {
   //   task: "",
   //   completed: false
   // };
-
-  newTask(newInput) {
-    let newPost: ToDo = { task: "", completed: false };
-    this.todos.push(newPost);
+  newToDo: ToDo = {
+    task: "",
+    completed: false
+  };
+  newTask() {
+    this.todos.push(this.newToDo);
+    this.newToDo = { task: "", completed: false };
+  }
+  delete(index) {
+    this.todos.splice(index, 1);
   }
 }

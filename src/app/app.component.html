@@ -5,14 +5,13 @@
     </header>
     <input class="inputbox" type="text" placeholder="type here if you dare" />
     <ol class="containerList">
-        <li><button>Complete</button> fight <i class="fas fa-skull skull"></i></li>
-        <li>
-            <button>{{ todo.completed }}</button>{{ todo.task }}
-            <i class="fas fa-skull skull"></i>
+        <li *ngFor="let newStuff of todos">
+            {{ newStuff.task }} {{ newStuff.completed }}
+            <button class="skull" (click)="delete()">X</button>
         </li>
     </ol>
-    <form [(ngSubmit)]="newTask()">
-        <input [(ngModel)]="newPost.task" class="inputbox" type="text" placeholder="add things if you dare" id="Add" />
-        <button class="addButton">Add</button>
+    <form (ngSubmit)="newTask()">
+        <input [(ngModel)]="newToDo.task" class="inputbox" name="new" type="text" placeholder="add things if you dare" />
+        <button type="submit" class="addButton">Add</button>
     </form>
 </div>
